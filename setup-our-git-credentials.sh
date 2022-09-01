@@ -62,10 +62,10 @@ echo "--------------------------------------------------------------------------
 
 git config --global pull.rebase false
 git config --global push.default simple
-git config --global user.name "arcolinuxz"
-git config --global user.email "arcolinuxinfo@gmail.com"
-sudo git config --system core.editor nano
-git remote set-url origin git@github.com-arc:$githubdir/$project
+git config --global user.name "lucifer1708"
+git config --global user.email "20bce091@nith.ac.in"
+sudo git config --system core.editor nvim 
+git remote set-url origin https://github.com/$githubdir/$project
 
 echo
 tput setaf 3
