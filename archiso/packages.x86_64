@@ -152,6 +152,7 @@ mtpfs
 gvfs-mtp
 blueman
 starship
+htop
 neovim
 xclip
 xarchiver
