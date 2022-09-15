@@ -108,7 +108,7 @@ local themes = {
 }
 
 -- choose your theme here
-local chosen_theme = themes[3]
+local chosen_theme = themes[4]
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
@@ -366,7 +366,7 @@ globalkeys = my_table.join(
 	awful.key({ modkey }, "F7", function()
 		awful.util.spawn("virtualbox")
 	end, { description = virtualmachine, group = "function keys" }),
-	awful.key({ modkey }, "F8", function()
+	awful.key({ modkey }, "e", function()
 		awful.util.spawn(filemanager)
 	end, { description = filemanager, group = "function keys" }),
 	awful.key({ modkey }, "F9", function()
@@ -403,7 +403,7 @@ globalkeys = my_table.join(
 	--awful.key({ modkey }, "u", function () awful.screen.focused().mypromptbox:run() end,
 	--{description = "run prompt", group = "super"}),
 	awful.key({ modkey }, "x", function()
-		awful.util.spawn("archlinux-logout")
+		awful.util.spawn("arcolinux-logout")
 	end, { description = "exit", group = "hotkeys" }),
 	awful.key({ modkey }, "Escape", function()
 		awful.util.spawn("xkill")
@@ -420,6 +420,12 @@ globalkeys = my_table.join(
 	end),
 
 	-- ctrl+alt +  ...
+	awful.key({ modkey1, altkey }, "w", function()
+		awful.util.spawn("arcolinux-welcome-app")
+	end, { description = "ArcoLinux Welcome App", group = "alt+ctrl" }),
+	awful.key({ modkey1, altkey }, "e", function()
+		awful.util.spawn("arcolinux-tweak-tool")
+	end, { description = "ArcoLinux Tweak Tool", group = "alt+ctrl" }),
 	awful.key({ modkey1, altkey }, "Next", function()
 		awful.util.spawn("conky-rotate -n")
 	end, { description = "Next conky rotation", group = "alt+ctrl" }),
@@ -475,6 +481,43 @@ globalkeys = my_table.join(
 		awful.util.spawn("pamac-manager")
 	end, { description = "Pamac Manager", group = "alt+ctrl" }),
 
+	-- alt + ...
+	awful.key({ altkey, "Shift" }, "t", function()
+		awful.spawn.with_shell("variety -t  && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+	end, { description = "Pywal Wallpaper trash", group = "altkey" }),
+	awful.key({ altkey, "Shift" }, "n", function()
+		awful.spawn.with_shell("variety -n  && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+	end, { description = "Pywal Wallpaper next", group = "altkey" }),
+	awful.key({ altkey, "Shift" }, "u", function()
+		awful.spawn.with_shell("wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+	end, { description = "Pywal Wallpaper update", group = "altkey" }),
+	awful.key({ altkey, "Shift" }, "p", function()
+		awful.spawn.with_shell("variety -p  && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+	end, { description = "Pywal Wallpaper previous", group = "altkey" }),
+	awful.key({ altkey }, "t", function()
+		awful.util.spawn("variety -t")
+	end, { description = "Wallpaper trash", group = "altkey" }),
+	awful.key({ altkey }, "n", function()
+		awful.util.spawn("variety -n")
+	end, { description = "Wallpaper next", group = "altkey" }),
+	awful.key({ altkey }, "p", function()
+		awful.util.spawn("variety -p")
+	end, { description = "Wallpaper previous", group = "altkey" }),
+	awful.key({ altkey }, "f", function()
+		awful.util.spawn("variety -f")
+	end, { description = "Wallpaper favorite", group = "altkey" }),
+	awful.key({ altkey }, "Left", function()
+		awful.util.spawn("variety -p")
+	end, { description = "Wallpaper previous", group = "altkey" }),
+	awful.key({ altkey }, "Right", function()
+		awful.util.spawn("variety -n")
+	end, { description = "Wallpaper next", group = "altkey" }),
+	awful.key({ altkey }, "Up", function()
+		awful.util.spawn("variety --pause")
+	end, { description = "Wallpaper pause", group = "altkey" }),
+	awful.key({ altkey }, "Down", function()
+		awful.util.spawn("variety --resume")
+	end, { description = "Wallpaper resume", group = "altkey" }),
 	awful.key({ altkey }, "F2", function()
 		awful.util.spawn("xfce4-appfinder --collapsed")
 	end, { description = "Xfce appfinder", group = "altkey" }),
@@ -505,6 +548,10 @@ globalkeys = my_table.join(
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ altkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
+
+	-- Tag browsing alt + tab
+	awful.key({ altkey }, "Tab", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	awful.key({ altkey, "Shift" }, "Tab", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 
 	-- Tag browsing modkey + tab
 	awful.key({ modkey }, "Tab", awful.tag.viewnext, { description = "view next", group = "tag" }),
@@ -590,12 +637,12 @@ globalkeys = my_table.join(
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
-	awful.key({ altkey }, "Tab", function()
-		awful.client.focus.history.previous()
-		if client.focus then
-			client.focus:raise()
-		end
-	end, { description = "go back", group = "client" }),
+	-- awful.key({ modkey1 }, "Tab", function()
+	-- 	awful.client.focus.history.previous()
+	-- 	if client.focus then
+	-- 		client.focus:raise()
+	-- 	end
+	-- end, { description = "go back", group = "client" }),
 
 	-- Show/Hide Wibox
 	awful.key({ modkey }, "b", function()
@@ -696,14 +743,6 @@ globalkeys = my_table.join(
 		os.execute("light -A 5")
 	end, { description = "+5%", group = "hotkeys" }),
 	awful.key({}, "XF86MonBrightnessDown", function()
-		os.execute("light -U 5")
-	end, { description = "-5%", group = "hotkeys" }),
-
-	-- Brightness Using External Keyboard
-	awful.key({ modkey }, "'", function()
-		os.execute("light -A 5")
-	end, { description = "+5%", group = "hotkeys" }),
-	awful.key({ modkey }, ";", function()
 		os.execute("light -U 5")
 	end, { description = "-5%", group = "hotkeys" }),
 
@@ -1007,14 +1046,11 @@ awful.rules.rules = {
 
 	{ rule = { class = "Vivaldi-stable" }, properties = { maximized = false, floating = false } },
 
-	{
-		rule = { class = "Vivaldi-stable" },
-		properties = {
-			callback = function(c)
-				c.maximized = false
-			end,
-		},
-	},
+	{ rule = { class = "Vivaldi-stable" }, properties = {
+		callback = function(c)
+			c.maximized = false
+		end,
+	} },
 
 	--IF using Vivaldi snapshot you must comment out the rules above for Vivaldi-stable as they conflict
 	--    { rule = { class = "Vivaldi-snapshot" },
@@ -1034,6 +1070,7 @@ awful.rules.rules = {
 			},
 			class = {
 				"Arandr",
+				"Arcolinux-welcome-app.py",
 				"Blueberry",
 				"Galculator",
 				"Gnome-font-viewer",
@@ -1042,7 +1079,7 @@ awful.rules.rules = {
 				"Font-manager",
 				"Kruler",
 				"MessageWin", -- kalarm.
-				"archlinux-logout",
+				"arcolinux-logout",
 				"Peek",
 				"Skype",
 				"System-config-printer.py",
@@ -1096,14 +1133,6 @@ client.connect_signal("manage", function(c)
 		awful.placement.no_offscreen(c)
 	end
 end)
-
-
--- FOR ROUNDED CORNERS
--- client.connect_signal("manage", function (c)
---     c.shape = function(cr,w,h)
---         gears.shape.rounded_rect(cr,w,h,6)
---     end
--- end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)

@@ -71,7 +71,9 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/vim-vsnip")
 	use("hrsh7th/cmp-vsnip")
-
+  use { 'ibhagwan/fzf-lua',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
 	-- snippets
 	use({ "L3MON4D3/LuaSnip" }) --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use

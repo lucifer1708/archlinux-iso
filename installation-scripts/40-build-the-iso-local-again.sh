@@ -1,15 +1,4 @@
 #!/bin/bash
-#set -e
-##################################################################################################################
-# Author	:	Erik Dubois
-# Website	:	https://www.erikdubois.online
-# Website	:	https://www.arcolinux.info
-# Website	:	https://www.arcolinux.com
-# Website	:	https://www.arcolinuxd.com
-# Website	:	https://www.arcolinuxb.com
-# Website	:	https://www.arcolinuxiso.com
-# Website	:	https://www.arcolinuxforum.com
-# Website	:	https://www.alci.online
 ##################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -36,8 +25,8 @@ echo
 
 	# setting of the general parameters
 	archisoRequiredVersion="archiso 65-1"
-	buildFolder=$HOME"/alci-build"
-	outFolder=$HOME"/Alci-Iso-Dev-Out"
+	buildFolder=$HOME"/Arch-build"
+	outFolder=$HOME"/Arch-Iso-Dev-Out"
 	archisoVersion=$(sudo pacman -Q archiso)
 
 	echo "################################################################## "

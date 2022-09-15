@@ -18,6 +18,7 @@ require("user.indentline")
 require("user.alpha")
 require("user.whichkey")
 require("user.autocommands")
+require("user.fzf")
 require("user.nvim-comment")
 -- require "user.colorizer"
 -- require("user.sniprun")
