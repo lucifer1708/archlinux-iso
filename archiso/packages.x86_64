@@ -111,7 +111,6 @@ udftools
 usb_modeswitch
 usbmuxd
 usbutils
-vim
 vpnc
 wireless-regdb
 wireless_tools
@@ -133,7 +132,6 @@ pulseaudio-bluetooth
 xorg-server
 xorg-xrandr
 xdg-user-dirs
-bash-completion
 networkmanager
 network-manager-applet
 lightdm
