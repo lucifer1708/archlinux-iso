@@ -118,13 +118,15 @@ wvdial
 xfsprogs
 xl2tpd
 zsh
+zsh-autosuggestions
+zsh-completions
 
 #Audio Backend
 pavucontrol
-pulseaudio
-pulseaudio-alsa
-pulseaudio-jack
-pulseaudio-bluetooth
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
 
 
 #Arch Linux GUI i3 core

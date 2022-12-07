@@ -18,17 +18,19 @@
 
 
 #------------------------ ZSH shell configurations -------------------------------------
-export ZSH="$HOME/.oh-my-zsh"
 
-plugins=(
-  zsh-autosuggestions
-  vi-mode
-)
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
 setopt HIST_SAVE_NO_DUPS
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
-source $ZSH/oh-my-zsh.sh
+export PATH=$HOME/.local/bin:$PATH
 eval "$(starship init zsh)"
+autoload -U compinit && compinit
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#636362,bold,underline"
 #------------------------ END -----------------------------------------------
 
 
