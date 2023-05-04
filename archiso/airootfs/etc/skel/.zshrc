@@ -18,35 +18,49 @@
 
 
 #------------------------ ZSH shell configurations -------------------------------------
-
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-setopt HIST_SAVE_NO_DUPS
+export PATH=$HOME/.local/bin:$HOME/go/bin:$PATH:$GHCUP_INSTALL_BASE_PREFIX/.ghcup/bin
+export GOPATH=$HOME/go
+autoload -U compinit; compinit
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
-export PATH=$HOME/.local/bin:$PATH
-eval "$(starship init zsh)"
-autoload -U compinit && compinit
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#636362,bold,underline"
+source /usr/share/doc/mcfly/mcfly.zsh
+source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
+eval "$(starship init zsh)"
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=500000
+SAVEHIST=500000
+setopt appendhistory
+setopt INC_APPEND_HISTORY  
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
 #------------------------ END -----------------------------------------------
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
 
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 
-
+export BROWSER="firefox"
+export API_KEY="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"
 [[ $- != *i* ]] && return
 EDITOR='nvim' # Variable for $EDITOR
 alias ls='ls --color=auto'
-alias installer='sudo calamares'
-alias autostart='sudo chmod +x .config/awesome/autostart.sh'
 alias vi='nvim'
 alias vim='nvim'
-alias cptoken='cat ~/.token.txt | xclip -selection clipboard'
 alias clr='clear'
 alias bye='exit'
 alias fm='ranger'
+alias copy='xclip -selection clipboard'
 alias vim-config='cd ~/.config/nvim/'
+alias chwal='feh --bg-fill --randomize ~/Pictures/walls/images/'
+alias gclone1='git clone --depth=1' 
+alias run-server='npm run dev -- --open'
+alias compile-tex="latexmk -pvc -pdf"
 
 #------------------ GIT ALIASES -------------
 alias g='git'
@@ -69,7 +83,7 @@ alias activate-env='source .venv/bin/activate'
 alias create-env='virtualenv .venv'
 
 #----------------------------- list -----------------------------------
-alias lf='ls -p | grep -v /'
+# alias lf='ls -p | grep -v /'
 alias lfa='ls -ap | grep -v /'
 alias ld='ls -p | grep /'
 alias lda='ls -Ap | grep /'
@@ -276,11 +290,38 @@ ex ()
   fi
 }
 
+function cdf(){
+cd "$(find $HOME -type d|fzf)"
+}
+
+open ()
+{
+if [ -f $1 ]; then
+  case $1 in 
+    *.pdf)  zathura $1 & disown;;
+    *.mp3) mpv $1 & disown;;
+    *.mp4) mpv $1 & disown;;
+    *.png) sxiv $1 & disown;;
+    *.jpg) sxiv $1 & disown;;
+    *.jpeg) sxiv $1 & disown;;
+    *.webp) sxiv $1 & disown;;
+    *) echo "'$1' cannot be openned";;
+  esac
+else
+  echo "'$1' is not valid file"
+fi
+}
+
+function run {
+ if ! pgrep $1 ;
+  then
+    $@& disown
+  fi
+}
 # remove
 alias rmgitcache="rm -r ~/.cache/git"
 
 
 # USELESS ALIASES
 alias fetch='neofetch'
-
 

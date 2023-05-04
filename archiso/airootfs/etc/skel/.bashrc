@@ -16,22 +16,26 @@
 # # # # # # # # # # # # # # # # # # # #
 
 
-# STARSHIP PROMPT =>
+# STARSHIP PROMPT ==>
 eval "$(starship init bash)"
 
 export PATH=$HOME/.local/bin:$PATH
 
+
 [[ $- != *i* ]] && return
 EDITOR='nvim' # Variable for $EDITOR
+alias ls='ls --color=auto'
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$'
 alias vim='nvim'
 alias vi='nvim'
 alias copy='xclip -selection clipboard'
+alias chwal='feh --bg-fill --randomize ~/Pictures/walls/images/'
 alias clr='clear'
 alias bye='exit'
 alias fm='ranger'
 alias vim-config='cd ~/.config/nvim/'
+alias compile-tex="latexmk -pvc -pdf"
 
 #GIT ALIASES
 alias g='git'
@@ -41,6 +45,7 @@ alias gb='git branch'
 alias gc='git checkout'
 alias gpush='git push origin'
 alias ggpush='git push -u origin'
+
 # Python Stuff Going Here
 alias pyrun="python manage.py runserver" # For Django
 alias activate-env='source venv/bin/activate'
@@ -249,10 +254,18 @@ ex ()
   fi
 }
 
+
+function run {
+ if ! pgrep $1 ;
+  then
+    $@&
+  fi
+}
 # remove
 alias rmgitcache="rm -r ~/.cache/git"
 
 
 # USELESS ALIASES
 alias fetch='neofetch'
+
 

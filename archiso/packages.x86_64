@@ -176,7 +176,6 @@ betterlockscreen
 #plank & deps
 siji
 xorg-fonts-misc
-nerd-fonts-fantasque-sans-mono
 npm
 
 cracklib
@@ -252,4 +251,26 @@ chaotic-mirrorlist
 chaotic-keyring
 
 grub-btrfs
+ttf-bitstream-vera
+ttf-croscore
+ttf-dejavu
+ttf-droid
+ttf-fantasque-nerd
+ttf-fira-mono
+ttf-fira-sans
+ttf-hack
+ttf-inconsolata
+ttf-iosevka
+ttf-iosevka-nerd
+ttf-jetbrains-mono-nerd
+ttf-joypixels
+ttf-liberation
+ttf-merriweather
+ttf-merriweather-sans
+ttf-opensans
+ttf-oswald
+ttf-quintessential
+ttf-roboto
+ttf-signika
+ttf-ubuntu-font-family
 
