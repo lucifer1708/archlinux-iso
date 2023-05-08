@@ -41,7 +41,6 @@ irssi
 iw
 iwd
 jfsutils
-
 kitty-terminfo
 less
 lftp
@@ -60,6 +59,7 @@ man-pages
 mc
 mdadm
 memtest86+
+memtest86+-efi
 mkinitcpio
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
@@ -110,6 +110,7 @@ udftools
 usb_modeswitch
 usbmuxd
 usbutils
+vim
 vpnc
 wireless-regdb
 wireless_tools
@@ -118,8 +119,8 @@ wvdial
 xfsprogs
 xl2tpd
 zsh
-zsh-autosuggestions
 zsh-completions
+zsh-autosuggestions
 
 #Audio Backend
 pavucontrol
@@ -250,7 +251,6 @@ arcolinux-wallpapers-git
 chaotic-mirrorlist
 chaotic-keyring
 
-grub-btrfs
 ttf-bitstream-vera
 ttf-croscore
 ttf-dejavu
@@ -260,7 +260,7 @@ ttf-fira-mono
 ttf-fira-sans
 ttf-hack
 ttf-inconsolata
-ttf-iosevka
+ttf-google-fonts-git
 ttf-iosevka-nerd
 ttf-jetbrains-mono-nerd
 ttf-joypixels

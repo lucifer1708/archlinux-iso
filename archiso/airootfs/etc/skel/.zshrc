@@ -24,8 +24,8 @@ autoload -U compinit; compinit
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/doc/mcfly/mcfly.zsh
-source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
+# source /usr/share/doc/mcfly/mcfly.zsh
+# source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 eval "$(starship init zsh)"
 
 HISTFILE="$HOME/.zsh_history"
